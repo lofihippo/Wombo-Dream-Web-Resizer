@@ -1,0 +1,37 @@
+```javascript
+// ==UserScript==
+// @name        DreamAI Image Resizer
+// @namespace   https://www.dream.ai/
+// @description This script resizes images to their natural dimensions on DreamAI websites.
+// @match     *://*.dream.ai/listing*
+// @version     1.0
+// @grant       none
+// @run-at      document-start
+// ==/UserScript==
+
+(function() {
+    let aspectRatio = 1920 / 1080;
+
+    // function to resize the trading_card image
+    function resizeImage() {
+        let img = document.querySelector('img[alt="trading_card"]');
+        if (img) {
+            let container = img.parentElement; // assuming image is wrapped in a container
+            container.style.maxWidth = '100%';
+            container.style.height = (container.offsetWidth / aspectRatio) + 'px';
+        }
+    }
+
+    // create a MutationObserver instance to watch for changes in the DOM
+    let observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                resizeImage();
+            }
+        });
+    });
+
+    // start observing the document with the configured parameters
+    observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+})();
+```
