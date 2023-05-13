@@ -1,4 +1,5 @@
 **# Wombo-Dream-Web-Resizer**
+
 Tampermonkey boilerplate script that resizes the image in the preview as a 16x9 resolution aspect ratio instead of being smushed together assuming it's a phone resolution on the web. 
 
 **Without Script:**
@@ -55,5 +56,6 @@ Once you have the Editor open, paste the script:
 })();
 ```
 **Future suggestions or possible changes**
+
 This is just a boilerplate script that shows it can be resized. I'm not experienced enough with scripting/css to accurately change it so the bounding box around the resized image, is properly scaled up to make the overall image shown larger. 
 If someone wants to modify it and also support other aspect ratios and image sizes than 16x9 and 1920x1080p, that would be awesome. 
